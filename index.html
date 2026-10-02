@@ -410,77 +410,54 @@ footer{
 }
 /* CINEMATIC MOVING LIGHT */
 
+/* CURVED CINEMATIC LIGHT LINES */
+
 .moving-lines{
     position:fixed;
     inset:0;
     pointer-events:none;
     overflow:hidden;
     z-index:0;
-    opacity:1;
+    opacity:.7;
 }
 
-.moving-lines::before{
-    content:"";
-    position:absolute;
-    width:650px;
-    height:650px;
-    left:-250px;
-    top:20%;
-    border-radius:50%;
-    background:radial-gradient(
-        circle,
-        rgba(210,174,124,.20) 0%,
-        rgba(210,174,124,.07) 28%,
-        rgba(210,174,124,.025) 50%,
-        transparent 72%
-    );
-    filter:blur(35px);
-    animation:ambientLight 16s ease-in-out infinite alternate;
-}
-
+.moving-lines::before,
 .moving-lines::after{
     content:"";
     position:absolute;
-    width:500px;
-    height:500px;
-    right:-220px;
-    bottom:5%;
+    width:140%;
+    height:180px;
+    left:-20%;
+    border-top:1px solid rgba(210,174,124,.38);
     border-radius:50%;
-    background:radial-gradient(
-        circle,
-        rgba(124,77,55,.15) 0%,
-        rgba(124,77,55,.045) 35%,
-        transparent 72%
-    );
-    filter:blur(45px);
-    animation:ambientLightTwo 20s ease-in-out infinite alternate;
+    filter:blur(.2px);
+    animation:curvedFlow 12s ease-in-out infinite alternate;
 }
 
-@keyframes ambientLight{
+.moving-lines::before{
+    top:30%;
+    transform:rotate(-8deg) scaleY(1.5);
+}
+
+.moving-lines::after{
+    top:58%;
+    border-top-color:rgba(124,77,55,.32);
+    animation-duration:16s;
+    animation-delay:-5s;
+    transform:rotate(7deg) scaleY(1.5);
+}
+
+@keyframes curvedFlow{
     0%{
-        transform:translate(0,0) scale(.9);
+        transform:translateX(-12%) rotate(-8deg) scaleY(1.5);
     }
 
     50%{
-        transform:translate(45vw,-8vh) scale(1.15);
+        transform:translateX(5%) rotate(0deg) scaleY(1.8);
     }
 
     100%{
-        transform:translate(75vw,12vh) scale(.95);
-    }
-}
-
-@keyframes ambientLightTwo{
-    0%{
-        transform:translate(0,0) scale(.9);
-    }
-
-    50%{
-        transform:translate(-35vw,-12vh) scale(1.1);
-    }
-
-    100%{
-        transform:translate(-65vw,8vh) scale(.95);
+        transform:translateX(12%) rotate(8deg) scaleY(1.5);
     }
 }
 
