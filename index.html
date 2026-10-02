@@ -409,50 +409,102 @@ footer{
     }
 }
 .moving-lines{
+   /* EJ FLOWING STORY LINE */
+
+.moving-lines{
     position:fixed;
     inset:0;
     pointer-events:none;
     overflow:hidden;
     z-index:0;
-    opacity:.66;
-}
-
-.moving-lines::before,
-.moving-lines::after{
-    content:"";
-    position:absolute;
-    width:200%;
-    height:1px;
-    left:-50%;
-    background:linear-gradient(
-        90deg,
-        transparent,
-        rgba(210,174,124,.0),
-        rgba(210,174,124,.45),
-        rgba(210,174,124,.0),
-        transparent
-    );
-    transform:rotate(-18deg);
-    animation:lightMove 9s linear infinite;
+    opacity:.75;
 }
 
 .moving-lines::before{
-    top:28%;
+    content:"";
+    position:absolute;
+    left:-10%;
+    top:18%;
+    width:120%;
+    height:1px;
+    background:linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(210,174,124,0) 20%,
+        rgba(210,174,124,.7) 45%,
+        rgba(255,240,205,.95) 50%,
+        rgba(210,174,124,.7) 55%,
+        rgba(210,174,124,0) 80%,
+        transparent 100%
+    );
+    transform:rotate(-12deg);
+    animation:ejLineOne 8s ease-in-out infinite;
 }
 
 .moving-lines::after{
-    top:62%;
-    animation-duration:13s;
-    animation-delay:-5s;
+    content:"";
+    position:absolute;
+    left:-10%;
+    top:72%;
+    width:120%;
+    height:1px;
+    background:linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(210,174,124,0) 30%,
+        rgba(210,174,124,.45) 48%,
+        rgba(255,240,205,.8) 50%,
+        rgba(210,174,124,.45) 52%,
+        rgba(210,174,124,0) 70%,
+        transparent 100%
+    );
+    transform:rotate(9deg);
+    animation:ejLineTwo 11s ease-in-out infinite;
 }
 
-@keyframes lightMove{
+@keyframes ejLineOne{
     0%{
-        transform:translateX(-35%) rotate(-18deg);
+        transform:translateX(-18%) rotate(-12deg);
+        opacity:0;
+    }
+
+    20%{
+        opacity:.8;
+    }
+
+    50%{
+        transform:translateX(8%) rotate(-12deg);
+        opacity:1;
+    }
+
+    80%{
+        opacity:.8;
     }
 
     100%{
-        transform:translateX(35%) rotate(-18deg);
+        transform:translateX(25%) rotate(-12deg);
+        opacity:0;
+    }
+}
+
+@keyframes ejLineTwo{
+    0%{
+        transform:translateX(20%) rotate(9deg);
+        opacity:0;
+    }
+
+    25%{
+        opacity:.6;
+    }
+
+    55%{
+        transform:translateX(-5%) rotate(9deg);
+        opacity:1;
+    }
+
+    100%{
+        transform:translateX(-25%) rotate(9deg);
+        opacity:0;
     }
 }
 
